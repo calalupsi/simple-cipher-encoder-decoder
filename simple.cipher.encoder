@@ -7,7 +7,7 @@ def shift_cipher(message, shift):
             result += chr((ord(char) - ord('a' if char.islower() else 'A') + shift) % 26 + ord('a' if char.islower() else 'A'))
         else:
             # If the character is not a letter, display an error message.
-            print("Invalid input. The message should consist only of letters.")
+            print("Invalid input. The message should consist only of English alphabet letters.")
             return None
     return result
 
@@ -21,8 +21,8 @@ def encode_message():
 
     # If the user enters invalid input, terminate the encode_message function.
     for char in message:
-        if not char.isalpha():
-            print("Invalid input. The message should consist only of letters.")
+        if not char.isalpha() or (char.isalpha() and not char.isascii()):
+            print("Invalid input. The message should consist only of English alphabet letters.")
             return
 
     shift = int(input("Enter the shift value: "))
@@ -41,8 +41,8 @@ def decode_message():
 
     # If the user enters invalid input, terminate the decode_message function.
     for char in message:
-        if not char.isalpha():
-            print("Invalid input. The message should consist only of letters.")
+        if not char.isalpha() or (char.isalpha() and not char.isascii()):
+            print("Invalid input. The message should consist only of English alphabet letters.")
             return
 
     shift = int(input("Enter the shift value: "))
@@ -76,3 +76,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
